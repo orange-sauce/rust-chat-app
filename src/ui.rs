@@ -18,6 +18,8 @@ impl eframe::App for App {
             let label = egui::Label::new(self.counter.to_string());
             ui.add(label);
             let submit_button = egui::Button::new("Send");
+            if ui.add(submit_button).clicked() {
+            }
             if !self.message.is_empty() {
                 for i in self.message.clone() {
                     ui.add(egui::Label::new(format!("{}", i)));
@@ -59,7 +61,7 @@ pub fn run_ui() -> eframe::Result {
         ..Default::default()
     };
     eframe::run_native(
-        "ChitChat",
+        "Rust Chat App",
         options,
         Box::new(|cc| {
             egui_extras::install_image_loaders(&cc.egui_ctx);
